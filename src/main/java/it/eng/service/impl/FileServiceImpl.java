@@ -52,10 +52,14 @@ public class FileServiceImpl implements FileService {
         file.setFileSize(fileDTO.getContent().length);
         if(file.getDateCreated() == null) {
         file.dateCreated(LocalDate.now());
-//        log.debug("THIS IS TIME OF CREATION");
+        log.debug("Time of creation: " + file.getDateCreated().toString());
         }
         file.setLastModified(LocalDate.now());
-//        log.debug("THIS IS LAST TIME OF MODIFICATION);
+        log.debug("Time of the last modification: " + file.getLastModified().toString());
+        file.setCode(Integer.toString(file.getName().hashCode())
+				+ Integer.toString(file.getDateCreated().toString().hashCode())
+				+ Integer.toString(file.getLogin().hashCode()));
+        log.debug("Generated code for uploaded file: " + file.getCode());
         
         file = fileRepository.save(file);
         return fileMapper.toDto(file);

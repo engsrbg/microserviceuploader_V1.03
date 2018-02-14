@@ -44,14 +44,18 @@ public class FileServiceImpl implements FileService {
      */
     @Override
     public FileDTO save(FileDTO fileDTO) {
-        log.debug("Request to save File : {}", fileDTO);  
+    	log.debug("Request to save File : {}", fileDTO);  
         File file = fileMapper.toEntity(fileDTO);
         
         // Fill data for the database
         file.setLogin(SecurityUtils.getCurrentUserLogin().get().toString());
         file.setFileSize(fileDTO.getContent().length);
+        if(file.getDateCreated() == null) {
         file.dateCreated(LocalDate.now());
+//        log.debug("THIS IS TIME OF CREATION");
+        }
         file.setLastModified(LocalDate.now());
+//        log.debug("THIS IS LAST TIME OF MODIFICATION);
         
         file = fileRepository.save(file);
         return fileMapper.toDto(file);

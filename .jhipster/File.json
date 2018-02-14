@@ -1,0 +1,55 @@
+{
+    "fluentMethods": true,
+    "relationships": [],
+    "fields": [
+        {
+            "fieldName": "code",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "name",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "description",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "content",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "any",
+            "fieldValidateRules": [
+                "maxbytes"
+            ],
+            "fieldValidateRulesMaxbytes": 20971520
+        },
+        {
+            "fieldName": "fileSize",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "format",
+            "fieldType": "FormatType",
+            "fieldValues": "PDF,DOCX,XLSX"
+        },
+        {
+            "fieldName": "dateCreated",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "lastModified",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "login",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20180213094845",
+    "entityTableName": "file",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "microserviceName": "microserviceuploader"
+}

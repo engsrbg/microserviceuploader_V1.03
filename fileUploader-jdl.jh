@@ -1,0 +1,21 @@
+DEFAULT_MAX_BYTES = 20971520
+
+entity File {
+	code String,
+    name String,
+    description String,
+    content Blob maxbytes(DEFAULT_MAX_BYTES),
+    fileSize Integer,
+    format FormatType,
+    dateCreated LocalDate,
+    lastModified LocalDate,
+    login String
+}
+
+enum FormatType {
+	PDF, DOCX, XLSX
+}
+
+paginate File with pagination
+dto * with mapstruct
+service all with serviceImpl

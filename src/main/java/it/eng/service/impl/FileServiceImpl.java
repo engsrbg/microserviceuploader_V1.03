@@ -105,9 +105,8 @@ public class FileServiceImpl implements FileService {
     }
     
     @Override
-    public Page<File> findByLogin(Pageable pageable, String name) {
-    	// TODO Auto-generated method stub
-    	
-    	return fileRepository.findByLogin(pageable, name);
+    public Page<File> findByLogin(Pageable pageable, String login) {
+    	// TODO Auto-generated method stub    	
+    	return fileRepository.findByLogin(pageable, login);   	
     }
 }

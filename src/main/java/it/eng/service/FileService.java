@@ -41,5 +41,12 @@ public interface FileService {
      */
     void delete(Long id);
     
-    Page<File> findByLogin(Pageable pageable, String name);
+    /**
+     * Get all column from the table File by "login" for the logged user
+     * 
+     * @param pageable the pagination information
+     * @param login
+     * @return the list of uploaded files for logged user
+     */
+    Page<File> findByLogin(Pageable pageable, String login);
 }

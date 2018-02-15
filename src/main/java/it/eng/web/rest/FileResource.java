@@ -103,11 +103,8 @@ public class FileResource {
 //    public ResponseEntity<List<FileDTO>> getAllFiles(Pageable pageable) {
     public ResponseEntity<List<File>> getAllFiles(Pageable pageable) {
         log.debug("REST request to get a page of Files");
-//        Page<FileDTO> page = fileService.findAll(pageable);
-        System.out.println(SecurityUtils.getCurrentUserLogin().get());
-        String name = SecurityUtils.getCurrentUserLogin().get().toString();
-        Page<File> page = fileService.findByLogin(pageable, name);
-        System.err.println("Ovo je findByName: " + page);
+        String login = SecurityUtils.getCurrentUserLogin().get().toString();
+        Page<File> page = fileService.findByLogin(pageable, login);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/files");
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }

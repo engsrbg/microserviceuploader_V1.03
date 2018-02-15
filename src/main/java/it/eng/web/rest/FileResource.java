@@ -93,7 +93,7 @@ public class FileResource {
     }
 
     /**
-     * GET  /files : get all the files.
+     * GET  /files : get all the files which owner is logged user.
      *
      * @param pageable the pagination information
      * @return the ResponseEntity with status 200 (OK) and the list of files in body

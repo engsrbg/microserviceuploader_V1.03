@@ -48,5 +48,5 @@ public interface FileService {
      * @param login
      * @return the list of uploaded files for logged user
      */
-    Page<File> findByLogin(Pageable pageable, String login);
+    Page<FileDTO> findByLogin(Pageable pageable, String login);
 }

@@ -5,6 +5,9 @@ import java.time.LocalDate;
 import javax.validation.constraints.*;
 import java.io.Serializable;
 import java.util.Objects;
+
+import javax.persistence.Basic;
+import javax.persistence.FetchType;
 import javax.persistence.Lob;
 import it.eng.domain.enumeration.FormatType;
 
@@ -21,6 +24,7 @@ public class FileDTO implements Serializable {
 
     private String description;
 
+    @Basic(fetch=FetchType.LAZY)
     @Size(max = 20971520)
     @Lob
     private byte[] content;

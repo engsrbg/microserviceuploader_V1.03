@@ -24,7 +24,6 @@ public class FileDTO implements Serializable {
 
     private String description;
 
-    @Basic(fetch=FetchType.LAZY)
     @Size(max = 20971520)
     @Lob
     private byte[] content;

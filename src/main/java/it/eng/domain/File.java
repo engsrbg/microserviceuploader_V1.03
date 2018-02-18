@@ -35,7 +35,6 @@ public class File implements Serializable {
     @Column(name = "description")
     private String description;
 
-    @Basic(fetch=FetchType.LAZY)
     @Size(max = 20971520)
     @Lob
     @Column(name = "content")

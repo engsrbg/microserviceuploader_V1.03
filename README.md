@@ -1,3 +1,36 @@
+#Plan - Uploader Microservice
+1.	+ Donattela – Clarifies how to generate fronted automatically		
+2.	+ Set up environment for microservice microserviceuploader:
+			C:\Engineering\IGSUploader
+			C:\Engineering\IGSUploader\gateway
+			C:\Engineering\IGSUploader\jhipster-registry-master
+			C:\Engineering\IGSUloader\microserviceuploader
+3.	+ Creating .jdl which we will use to create the table with name file for microserviceuploader
+file: (id (autoincrement), fileID(find the best algorithm for unique fileID), dateCreated, lastModified, description, name, content(blob), size(20MB), format(PDF, DOCX, XLSX), userID)
+4.	+ Creating entities, database, and initial frontend using created .jdl file.
+5.	+ CRUD logic – for backend and frontend
+6.	Research on the Internet: 
+			a.	+ File Chooser for PDF, DOCX, XLSX
+			b.	+ How to get and send selected files over REST
+			c.	+ Limitation file on the size 20MB
+			d.	+ Transforms file in the BLOB format
+			e.	- Scan file using an antivirus
+			f.	- Find the best way to compare two files which we upload
+			g.	+ - Find the easiest way to show files which format can be PDF, DOCX, XLSX
+7.	Work on the frontend part of the task
+			a.	+ Upload
+			b.	+ radio button for wanted type of file which is uploaded (PDF, DOCX, XLSX)
+			c.	+ check size of file which is uploaded
+			d.	- history of the uploaded files
+			e.	+ - preview (content of the selected file)
+			f.	- edit (description of the file)
+			g.	+ download (selected file)
+8.	+ Tests and refactoring
+
+
+Team Belgrade - Serbia
+
+
 # microserviceuploader
 This application was generated using JHipster 4.13.3, you can find documentation and help at [http://www.jhipster.tech/documentation-archive/v4.13.3](http://www.jhipster.tech/documentation-archive/v4.13.3).
 

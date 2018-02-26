@@ -1,20 +1,12 @@
 package it.eng.service.impl;
 
 import it.eng.service.FileService;
-import it.eng.converter.ConvertDocToPDF;
-import it.eng.converter.Docx2PdfConversion;
-import it.eng.converter.WordToPDFConvert;
 import it.eng.domain.File;
 import it.eng.repository.FileRepository;
 import it.eng.security.SecurityUtils;
 import it.eng.service.dto.FileDTO;
 import it.eng.service.mapper.FileMapper;
-
-import java.io.ByteArrayOutputStream;
-import java.io.FileOutputStream;
-import java.io.OutputStream;
 import java.time.LocalDate;
-import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -110,6 +102,11 @@ public class FileServiceImpl implements FileService {
         fileRepository.delete(id);
     }
     
+    /**
+     * Find the file by Login column.
+     *
+     * @param login the name of logged user which i unique
+     */
     @Override
     public Page<FileDTO> findByLogin(Pageable pageable, String login) {
     	return fileRepository.findByLogin(pageable, login).map(fileMapper::toDto);   	

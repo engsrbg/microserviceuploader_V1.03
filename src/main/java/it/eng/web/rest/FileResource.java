@@ -135,13 +135,10 @@ public class FileResource {
     public ResponseEntity<FileDTO> viewFile(@PathVariable Long id) {
         log.debug("REST request to get File : {}", id);
         FileDTO fileDTO = fileService.findOne(id);
-        if(fileDTO.getContentContentType().equals("application/vnd.openxmlformats-officedocument.wordprocessingml.document")){
-        	fileDTO.setContent(Docx2PdfConversion.convertWord2PDF(fileDTO.getContent()));
+        if(fileDTO.getContentContentType().equals("application/vnd.openxmlformats-officedocument.wordprocessingml.document")) {
+        	fileDTO.setContent(Docx2PdfConversion.convertWord2PDF(fileDTO.getContent())); 
+        	fileDTO.setContentContentType("application/pdf");
         }
-        else if (fileDTO.getContentContentType().equals("application/vnd.openxmlformats-officedocument.spreadsheetml.sheet")) {
-        	fileDTO.setContent(Docx2PdfConversion.convertExcel2PDF(fileDTO.getContent()));
-        }
-        fileDTO.setContentContentType("application/pdf");
         return ResponseUtil.wrapOrNotFound(Optional.ofNullable(fileDTO));
     }
 

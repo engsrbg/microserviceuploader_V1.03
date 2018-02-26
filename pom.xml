@@ -349,6 +349,101 @@
             <artifactId>spring-security-data</artifactId>
         </dependency>
         <!-- jhipster-needle-maven-add-dependency -->
+                
+    <dependency>
+			<groupId>org.docx4j</groupId>
+			<artifactId>docx4j-ImportXHTML</artifactId>
+			<version>3.0.0</version>
+			<exclusions>
+				<exclusion>
+					<groupId>org.slf4j</groupId>
+					<artifactId>slf4j-log4j12</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>log4j</groupId>
+					<artifactId>log4j</artifactId>
+				</exclusion>
+			</exclusions>
+	</dependency>
+	<!-- https://mvnrepository.com/artifact/com.itextpdf/itextpdf -->
+<dependency>
+    <groupId>com.itextpdf</groupId>
+    <artifactId>itextpdf</artifactId>
+    <version>5.5.12</version>
+</dependency>
+	<!-- https://mvnrepository.com/artifact/org.apache.poi/poi-ooxml -->
+<!-- https://mvnrepository.com/artifact/org.apache.poi/poi-ooxml -->
+<dependency>
+    <groupId>org.apache.poi</groupId>
+    <artifactId>poi-ooxml</artifactId>
+    <version>3.15</version>
+</dependency>
+
+<dependency>
+    <groupId>org.apache.poi</groupId>
+    <artifactId>poi</artifactId>
+    <version>3.15</version>
+</dependency>
+
+ <dependency>
+ <groupId>fr.opensagres.xdocreport</groupId>
+ <artifactId>org.apache.poi.xwpf.converter.pdf</artifactId>
+ <version>1.0.0</version>
+ </dependency>
+ 
+        <dependency>
+            <groupId>com.documents4j</groupId>
+            <artifactId>documents4j-api</artifactId>
+            <version>0.2.1</version>
+        </dependency>       
+
+        <dependency>
+            <groupId>com.documents4j</groupId>
+            <artifactId>documents4j-util-conversion</artifactId>
+            <version>0.2.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.documents4j</groupId>
+            <artifactId>documents4j-transformer</artifactId>
+            <version>0.2.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.documents4j</groupId>
+            <artifactId>documents4j-util-all</artifactId>
+            <version>0.2.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.documents4j</groupId>
+            <artifactId>documents4j-local</artifactId>
+            <version>0.2.1</version>
+        </dependency>
+        
+        <!-- https://mvnrepository.com/artifact/com.documents4j/documents4j-transformer-msoffice-word -->
+<dependency>
+    <groupId>com.documents4j</groupId>
+    <artifactId>documents4j-transformer-msoffice-word</artifactId>
+    <version>1.0.3</version>
+</dependency>
+        
+        
+        <!-- https://mvnrepository.com/artifact/com.documents4j/documents4j-transformer -->
+<dependency>
+    <groupId>com.documents4j</groupId>
+    <artifactId>documents4j-transformer</artifactId>
+    <version>1.0.3</version>
+</dependency>
+       
+       <!-- https://mvnrepository.com/artifact/com.documents4j/documents4j-transformer-msoffice-excel -->
+<dependency>
+    <groupId>com.documents4j</groupId>
+    <artifactId>documents4j-transformer-msoffice-excel</artifactId>
+    <version>1.0.3</version>
+</dependency>
+       
+        
     </dependencies>
 
     <build>

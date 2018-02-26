@@ -1,6 +1,8 @@
 package it.eng.repository;
 
 import it.eng.domain.File;
+import it.eng.service.dto.FileDTO;
+
 import org.springframework.stereotype.Repository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -18,5 +20,4 @@ import java.util.List;
 public interface FileRepository extends JpaRepository<File, Long> {
 	
 	public Page<File> findByLogin(Pageable pageable, String login);
-	
 }

@@ -2,6 +2,7 @@ package it.eng.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
 
+import it.eng.converter.Docx2PdfConversion;
 import it.eng.domain.File;
 import it.eng.security.SecurityUtils;
 import it.eng.service.FileService;
@@ -104,6 +105,7 @@ public class FileResource {
         log.debug("REST request to get a page of Files");
         String login = SecurityUtils.getCurrentUserLogin().get().toString();
         Page<FileDTO> page = fileService.findByLogin(pageable, login);
+        System.out.println("BROJ ELEMENATA POSLATO" + page.getTotalElements());
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/files");
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }
@@ -119,6 +121,27 @@ public class FileResource {
     public ResponseEntity<FileDTO> getFile(@PathVariable Long id) {
         log.debug("REST request to get File : {}", id);
         FileDTO fileDTO = fileService.findOne(id);
+        return ResponseUtil.wrapOrNotFound(Optional.ofNullable(fileDTO));
+    }
+    
+    /**
+     * GET  /files/view/:id : get the file by "id" and convert it for the PDF preview.
+     *
+     * @param id the id of the fileDTO to retrieve
+     * @return the ResponseEntity with status 200 (OK) and with body the fileDTO, or with status 404 (Not Found)
+     */
+    @GetMapping(value = "/files/view/{id}")
+    @Timed
+    public ResponseEntity<FileDTO> viewFile(@PathVariable Long id) {
+        log.debug("REST request to get File : {}", id);
+        FileDTO fileDTO = fileService.findOne(id);
+        if(fileDTO.getContentContentType().equals("application/vnd.openxmlformats-officedocument.wordprocessingml.document")){
+        	fileDTO.setContent(Docx2PdfConversion.convertWord2PDF(fileDTO.getContent()));
+        }
+        else if (fileDTO.getContentContentType().equals("application/vnd.openxmlformats-officedocument.spreadsheetml.sheet")) {
+        	fileDTO.setContent(Docx2PdfConversion.convertExcel2PDF(fileDTO.getContent()));
+        }
+        fileDTO.setContentContentType("application/pdf");
         return ResponseUtil.wrapOrNotFound(Optional.ofNullable(fileDTO));
     }
 

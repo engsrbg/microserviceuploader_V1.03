@@ -1,12 +1,18 @@
 package it.eng.service.impl;
 
 import it.eng.service.FileService;
+import it.eng.converter.ConvertDocToPDF;
+import it.eng.converter.Docx2PdfConversion;
+import it.eng.converter.WordToPDFConvert;
 import it.eng.domain.File;
 import it.eng.repository.FileRepository;
 import it.eng.security.SecurityUtils;
 import it.eng.service.dto.FileDTO;
 import it.eng.service.mapper.FileMapper;
 
+import java.io.ByteArrayOutputStream;
+import java.io.FileOutputStream;
+import java.io.OutputStream;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -16,7 +22,6 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
 
 /**
  * Service Implementation for managing File.
@@ -54,6 +59,7 @@ public class FileServiceImpl implements FileService {
         file.dateCreated(LocalDate.now());
         log.debug("Time of creation: " + file.getDateCreated().toString());
         }
+        
         file.setLastModified(LocalDate.now());
         log.debug("Time of the last modification: " + file.getLastModified().toString());
         file.setCode(Integer.toString(file.getName().hashCode())
@@ -92,7 +98,7 @@ public class FileServiceImpl implements FileService {
         File file = fileRepository.findOne(id);
         return fileMapper.toDto(file);
     }
-
+    
     /**
      * Delete the file by id.
      *

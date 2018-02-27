@@ -3,7 +3,6 @@ package it.eng.web.rest;
 import com.codahale.metrics.annotation.Timed;
 
 import it.eng.converter.Docx2PdfConversion;
-import it.eng.domain.File;
 import it.eng.security.SecurityUtils;
 import it.eng.service.FileService;
 import it.eng.web.rest.errors.BadRequestAlertException;
@@ -105,7 +104,6 @@ public class FileResource {
         log.debug("REST request to get a page of Files");
         String login = SecurityUtils.getCurrentUserLogin().get().toString();
         Page<FileDTO> page = fileService.findByLogin(pageable, login);
-        System.out.println("BROJ ELEMENATA POSLATO" + page.getTotalElements());
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/files");
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }

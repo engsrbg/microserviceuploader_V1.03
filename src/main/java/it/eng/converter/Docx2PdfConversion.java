@@ -2,6 +2,7 @@ package it.eng.converter;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import com.documents4j.api.DocumentType;
 import com.documents4j.api.IConverter;
@@ -22,6 +23,12 @@ public class Docx2PdfConversion {
 //	            converter.shutDown();
 
 	            byte[] data = outstream.toByteArray();
+	            try {
+					outstream.close();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 	            return data;
 	    }
 
